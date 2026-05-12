@@ -1,0 +1,49 @@
+{
+  "$schema": "https://opencode.ai/config.schema.json",
+  "theme": "opencode",
+  "autoshare": false,
+  "autoapprove": false,
+  "model": "anthropic/claude-sonnet-4-5",
+  "agents": [
+    {
+      "name": "domain-agent",
+      "description": "Implementa lógica de jogo pura (entidades, use cases, regras)",
+      "model": "anthropic/claude-sonnet-4-5",
+      "system": "opencode/prompts/domain-agent.md"
+    },
+    {
+      "name": "ui-agent",
+      "description": "Implementa telas e Composables Jetpack Compose",
+      "model": "anthropic/claude-sonnet-4-5",
+      "system": "opencode/prompts/ui-agent.md"
+    },
+    {
+      "name": "data-agent",
+      "description": "Implementa camada de dados Room + Hilt",
+      "model": "anthropic/claude-sonnet-4-5",
+      "system": "opencode/prompts/data-agent.md"
+    },
+    {
+      "name": "balance-agent",
+      "description": "Ajusta balanceamento de cartas e simula partidas",
+      "model": "anthropic/claude-sonnet-4-5",
+      "system": "opencode/prompts/balance-agent.md"
+    }
+  ],
+  "provider": {
+    "anthropic": {
+      "name": "Anthropic",
+      "env": "ANTHROPIC_API_KEY"
+    }
+  },
+  "mcp": {
+    "github": {
+      "type": "local",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      }
+    }
+  }
+}
